@@ -1,0 +1,29 @@
+{
+    "name": "lequorum-api",
+    "private": true,
+    "version": "1.0.0",
+    "license": "MIT",
+    "author": "Srujanee Nayak <snayak52006@gmail.com>",
+    "description": "The backend module of lequorum",
+    "type": "module",
+    "main": "index.js",
+    "homepage": "https://github.com/srujanee20/lequorum#readme",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/srujanee20/lequorum.git"
+    },
+    "bugs": {
+        "url": "https://github.com/srujanee20/lequorum/issues"
+    },
+    "scripts": {
+        "dev": "nodemon index"
+    },
+    "dependencies": {
+        "express": "^5.2.1",
+        "pg": "^8.20.0",
+        "sequelize": "^6.37.8"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.14"
+    }
+}
