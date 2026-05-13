@@ -3,7 +3,10 @@ import { Model, DataTypes } from 'sequelize';
 export default (sequelize) => {
 
     class Option extends Model {
-
+        id;
+        questionId;
+        text;
+        order;
     }
 
     Option.init(
@@ -25,7 +28,7 @@ export default (sequelize) => {
             order: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
-                default: 0
+                defaultValue: 0
             }
         },
         {
@@ -34,9 +37,9 @@ export default (sequelize) => {
             tableName: 'options',
             timestamps: false,
             underscored: true,
-            freezeTableName: true,
+            freezeTableName: true
         }
     );
 
     return Option;
-}
+};

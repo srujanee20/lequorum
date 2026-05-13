@@ -65,8 +65,8 @@ export default (sequelize) => {
             timestamps: true,
             underscored: true,
             freezeTableName: true
-        },
+        }
     );
 
     return Poll;
-}
+};

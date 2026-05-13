@@ -3,6 +3,10 @@ import { Model, DataTypes } from "sequelize";
 export default (sequelize) => {
 
     class Response extends Model {
+        id;
+        pollId;
+        userId;
+        submittedAt;
     }
 
     Response.init(
@@ -20,13 +24,13 @@ export default (sequelize) => {
             userId: {
                 field: 'user_id',
                 type: DataTypes.UUID,
-                allowNull: false
+                allowNull: true
             },
             submittedAt: {
                 field: 'submitted_at',
                 type: DataTypes.DATE,
                 allowNull: false,
-                defaultValue: DataTypes.NOW,
+                defaultValue: DataTypes.NOW
             }
         },
         {
@@ -40,4 +44,4 @@ export default (sequelize) => {
     );
 
     return Response;
-}
+};

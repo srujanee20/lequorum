@@ -2,6 +2,11 @@ import { Model, DataTypes } from 'sequelize';
 
 export default (sequelize) => {
     class Question extends Model {
+        id;
+        pollId;
+        text;
+        isMandatory;
+        order;
     }
 
     Question.init(
@@ -43,4 +48,4 @@ export default (sequelize) => {
     );
 
     return Question;
-}
+};

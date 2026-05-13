@@ -3,7 +3,10 @@ import { Model, DataTypes} from "sequelize";
 export default (sequelize) => {
 
     class Answer extends Model {
-
+        id;
+        responseId;
+        questionId;
+        optionId;
     }
 
     Answer.init(
@@ -40,4 +43,4 @@ export default (sequelize) => {
     );
 
     return Answer;
-}
+};

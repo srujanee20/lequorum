@@ -2,6 +2,9 @@ import { Model, DataTypes } from 'sequelize';
 
 export default (sequelize) => {
     class User extends Model {
+        id;
+        username;
+        password;
     }
 
     User.init(
@@ -9,17 +12,17 @@ export default (sequelize) => {
             id: {
                 type: DataTypes.UUID,
                 defaultValue: DataTypes.UUIDV4,
-                primaryKey: true,
+                primaryKey: true
             },
             username: {
                 type: DataTypes.STRING(30),
                 allowNull: false,
-                unique: true,
+                unique: true
             },
-            passwordHash: {
+            password: {
                 field: 'password_hash',
                 type: DataTypes.STRING,
-                allowNull: false,
+                allowNull: false
             }
         },
         {
@@ -33,4 +36,4 @@ export default (sequelize) => {
     );
 
     return User;
-}
+};

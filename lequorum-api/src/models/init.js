@@ -18,15 +18,15 @@ User.hasMany(Poll, { foreignKey: 'creatorId', as: 'polls', onDelete: 'CASCADE' }
 Poll.belongsTo(User, { foreignKey: 'creatorId', as: 'creator' });
 
 Poll.hasMany(Question, { foreignKey: 'pollId', as: 'questions', onDelete: 'CASCADE' });
-Question.belongsTo(Poll, { foreignKey: 'pollId' }); // FIXED TYPO
+Question.belongsTo(Poll, { foreignKey: 'pollId' });
 
 Question.hasMany(Option, { foreignKey: 'questionId', as: 'options', onDelete: 'CASCADE' });
 Option.belongsTo(Question, { foreignKey: 'questionId' });
 
-Poll.hasMany(Response, { foreignKey: 'pollId', as: 'responses', onDelete: 'CASCADE' }); // ADDED CASCADE
+Poll.hasMany(Response, { foreignKey: 'pollId', as: 'responses', onDelete: 'CASCADE' });
 Response.belongsTo(Poll, { foreignKey: 'pollId' });
 
-User.hasMany(Response, { foreignKey: 'userId', as: 'userResponses', onDelete: 'CASCADE' }); // ADDED CASCADE (or SET NULL)
+User.hasMany(Response, { foreignKey: 'userId', as: 'userResponses', onDelete: 'CASCADE' });
 Response.belongsTo(User, { foreignKey: 'userId', as: 'respondent' });
 
 Response.hasMany(Answer, { foreignKey: 'responseId', as: 'answers', onDelete: 'CASCADE' });
@@ -35,4 +35,4 @@ Answer.belongsTo(Response, { foreignKey: 'responseId' });
 Answer.belongsTo(Question, { foreignKey: 'questionId' });
 Answer.belongsTo(Option, { foreignKey: 'optionId' });
 
-export default { User, Poll, Question, Option, Response, Answer };
+export { sequelize, User, Poll, Question, Option, Response, Answer };
