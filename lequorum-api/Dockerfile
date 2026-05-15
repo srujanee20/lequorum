@@ -1,6 +1,6 @@
 FROM node:20-alpine
 
-LABEL org.opencontainers.image.authors="srujanee20"
+LABEL org.opencontainers.image.authors="Srujanee Nayak"
 LABEL org.opencontainers.image.version="1.0.1"
 LABEL org.opencontainers.image.description="Lequorum API Backend"
 
