@@ -1,6 +1,7 @@
-import { Box, Container, Heading, Text, VStack, HStack, Button, Spinner, SimpleGrid, Badge } from '@chakra-ui/react';
+import { Box, Container, Heading, Text, VStack, HStack, Button, Spinner, SimpleGrid, Badge, Center } from '@chakra-ui/react';
 import { useState, useEffect } from 'react';
 import { Link } from '@tanstack/react-router';
+import { Inbox } from 'lucide-react';
 import { getActivePolls } from '$/clients/pollClient.js';
 import { useAuth } from '$/contexts/AuthContext.jsx';
 import { formatDate } from '$/common/utils/datetime.util.js';
@@ -159,7 +160,9 @@ const Home = () => {
 
                 {!loading && polls.length === 0 && !error && (
                     <Box textAlign="center" py={16} bg="white" borderRadius="16px" border="1px dashed" borderColor="#E7E5E0">
-                        <Text fontSize="2xl" mb={3}>📭</Text>
+                    <Center mb={4} color="#78716C">
+                        <Inbox size={48} />
+                    </Center>
                         <Text fontWeight="500">No active polls found</Text>
                         <Text fontSize="sm" color="#78716C">Check back later for new polls.</Text>
                     </Box>

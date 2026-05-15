@@ -1,5 +1,6 @@
 import { Box, Container, Heading, Text, Button, VStack } from '@chakra-ui/react';
 import { useRouter } from '@tanstack/react-router';
+import { AlertCircle } from 'lucide-react';
 
 const ErrorState = ({ message = "We couldn't connect to our servers. Please try again later.", onRetry }) => {
     const router = useRouter();
@@ -25,7 +26,9 @@ const ErrorState = ({ message = "We couldn't connect to our servers. Please try 
                 boxShadow="0 4px 12px rgba(0,0,0,0.05)"
             >
                 <VStack gap={4}>
-                    <Text fontSize="5xl">🔌</Text>
+                    <Box color="#B85450">
+                        <AlertCircle size={48} />
+                    </Box>
                     <Heading fontFamily="'DM Serif Display', serif" size="xl">
                         Oops! Something went wrong
                     </Heading>

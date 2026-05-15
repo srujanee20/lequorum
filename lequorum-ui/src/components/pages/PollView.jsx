@@ -5,6 +5,7 @@ import {
 import { RadioGroup } from '@chakra-ui/react';
 import { useParams, useNavigate } from '@tanstack/react-router';
 import { useState, useEffect } from 'react';
+import { Clock, Lock, CheckCircle } from 'lucide-react';
 import { getPollById } from '$/clients/pollClient.js';
 import { submitResponse } from '$/clients/responseClient.js';
 import { useAuth } from '$/contexts/AuthContext.jsx';
@@ -55,7 +56,9 @@ const PollView = () => {
     if (poll.state === 'expired') {
         return (
             <Container maxW="680px" py={16} textAlign="center">
-                <Text fontSize="3xl" mb={4}>⏰</Text>
+                <Center mb={4} color="#78716C">
+                    <Clock size={48} />
+                </Center>
                 <Heading fontFamily="'DM Serif Display', serif" size="md" mb={2}>This poll has ended</Heading>
                 <Text color="#78716C" fontSize="sm">
                     {poll.title} closed on {formatDate(poll.expiresAt)}
@@ -67,7 +70,9 @@ const PollView = () => {
     if (!poll.isAnonymous && !isLoggedIn) {
         return (
             <Container maxW="500px" py={16} textAlign="center">
-                <Text fontSize="3xl" mb={4}>🔒</Text>
+                <Center mb={4} color="#576F6A">
+                    <Lock size={48} />
+                </Center>
                 <Heading fontFamily="'DM Serif Display', serif" size="md" mb={2}>Sign in to respond</Heading>
                 <Text color="#78716C" fontSize="sm" mb={6}>This poll requires you to be logged in.</Text>
                 <Button colorPalette="cta" onClick={() => navigate({ to: '/login' })}>Sign in</Button>
@@ -78,7 +83,9 @@ const PollView = () => {
     if (submitted) {
         return (
             <Container maxW="500px" py={16} textAlign="center">
-                <Text fontSize="3xl" mb={4}>✅</Text>
+                <Center mb={4} color="#576F6A">
+                    <CheckCircle size={48} />
+                </Center>
                 <Heading fontFamily="'DM Serif Display', serif" size="md" mb={2}>Response recorded</Heading>
                 <Text color="#78716C" fontSize="sm">
                     Thank you for participating in <strong>{poll.title}</strong>.

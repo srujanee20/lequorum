@@ -8,10 +8,12 @@ import {
     Badge,
     Button,
     Spinner,
-    SimpleGrid
+    SimpleGrid,
+    Center
 } from '@chakra-ui/react';
 import { Link, useNavigate } from '@tanstack/react-router';
 import { useQueryClient } from '@tanstack/react-query';
+import { Vote } from 'lucide-react';
 import * as pollApi from '$/clients/pollClient.js';
 import { useAuth } from '$/contexts/AuthContext.jsx';
 import { toaster } from '$components/ui/AppToaster.jsx';
@@ -153,9 +155,9 @@ const Dashboard = () => {
                     borderRadius="16px"
                     bg="white"
                 >
-                    <Text fontSize="2xl" mb={3}>
-                        🗳️
-                    </Text>
+                    <Center mb={4} color="#576F6A">
+                        <Vote size={48} />
+                    </Center>
                     <Text fontWeight="500" mb={1}>
                         No polls yet
                     </Text>

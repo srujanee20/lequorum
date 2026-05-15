@@ -4,6 +4,7 @@ import {
 } from '@chakra-ui/react';
 import { Stat } from '@chakra-ui/react';
 import { useParams, Link } from '@tanstack/react-router';
+import { Inbox } from 'lucide-react';
 import { useQueryClient } from '@tanstack/react-query';
 import { toaster } from '$components/ui/AppToaster.jsx';
 import AnalyticsChart from '$components/charts/AnalyticsChart.jsx';
@@ -147,7 +148,9 @@ const Analytics = () => {
 
             {analytics.totalResponses === 0 && (
                 <Box textAlign="center" py={10} color="#78716C">
-                    <Text fontSize="2xl" mb={2}>📭</Text>
+                    <Center mb={2} color="#78716C">
+                        <Inbox size={48} />
+                    </Center>
                     <Text fontSize="sm">No responses yet. Share the poll link to get started.</Text>
                     <Button
                         size="sm"
