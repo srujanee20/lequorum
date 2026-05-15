@@ -3,12 +3,6 @@ import { Model, DataTypes } from 'sequelize';
 export default (sequelize) => {
 
     class Poll extends Model {
-        id;
-        creatorId;
-        title;
-        isAnonymous;
-        expiresAt;
-        isPublished;
 
         isExpired() {
             return Date.now() > this.expiresAt;

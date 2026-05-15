@@ -2,12 +2,7 @@ import { Model, DataTypes} from "sequelize";
 
 export default (sequelize) => {
 
-    class Answer extends Model {
-        id;
-        responseId;
-        questionId;
-        optionId;
-    }
+    class Answer extends Model {}
 
     Answer.init(
         {

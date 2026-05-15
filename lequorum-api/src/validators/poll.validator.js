@@ -8,8 +8,12 @@ export const pollSchema = Joi.object({
         Joi.object({
             text: Joi.string().required(),
             isMandatory: Joi.boolean().required(),
+            order: Joi.number().integer().min(0).required(),
             options: Joi.array()
-                .items(Joi.object({ text: Joi.string().required() }))
+                .items(Joi.object({
+                    text: Joi.string().required(),
+                    order: Joi.number().integer().min(0).required()
+                }))
                 .min(2)
                 .required()
         })

@@ -1,13 +1,7 @@
 import { Model, DataTypes } from 'sequelize';
 
 export default (sequelize) => {
-    class Question extends Model {
-        id;
-        pollId;
-        text;
-        isMandatory;
-        order;
-    }
+    class Question extends Model {}
 
     Question.init(
         {

@@ -1,16 +1,65 @@
 import { sequelize, Poll, User, Question, Option } from "../models/init.js";
 import { logger } from '../configs/logger.config.js';
 
-export const getMyPolls = async (req, res) => {
+import { Op } from 'sequelize';
+
+export const getUserPolls = async (req, res) => {
     try {
+        const { userId } = req.params;
+        if (userId !== req.user.id) {
+            return res.status(403).json({ error: 'Forbidden' });
+        }
+
         const polls = await Poll.findAll({
-            where: { creatorId: req.user.id },
+            where: { creatorId: userId },
             order: [['createdAt', 'DESC']],
             attributes: ['id', 'title', 'isAnonymous', 'expiresAt', 'isPublished', 'createdAt']
         });
 
-        logger.debug({ userId: req.user.id, count: polls.length }, 'Fetched user polls');
+        logger.debug({ userId, count: polls.length }, 'Fetched user polls');
         res.json(polls);
+    } catch (err) {
+        logger.error(err);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+};
+
+export const getAllPolls = async (req, res) => {
+    try {
+        const page = parseInt(req.query.page) || 1;
+        const limit = parseInt(req.query.limit) || 10;
+        const offset = (page - 1) * limit;
+        let anonymousOnly = req.query.anonymousOnly === 'true';
+        if (!req.user) {
+            anonymousOnly = true;
+        }
+
+        const where = {
+            expiresAt: { [Op.gt]: new Date() }
+        };
+
+        if (anonymousOnly) {
+            where.isAnonymous = true;
+        }
+
+        const { count, rows: polls } = await Poll.findAndCountAll({
+            where,
+            include: [{ model: User, as: 'creator', attributes: ['username'] }],
+            order: [['createdAt', 'DESC']],
+            limit,
+            offset,
+            attributes: ['id', 'title', 'isAnonymous', 'expiresAt', 'createdAt']
+        });
+
+        res.json({
+            data: polls,
+            meta: {
+                total: count,
+                page,
+                limit,
+                totalPages: Math.ceil(count / limit)
+            }
+        });
     } catch (err) {
         logger.error(err);
         res.status(500).json({ error: 'Internal server error' });

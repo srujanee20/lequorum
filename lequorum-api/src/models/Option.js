@@ -2,12 +2,7 @@ import { Model, DataTypes } from 'sequelize';
 
 export default (sequelize) => {
 
-    class Option extends Model {
-        id;
-        questionId;
-        text;
-        order;
-    }
+    class Option extends Model {}
 
     Option.init(
         {

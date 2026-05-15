@@ -12,5 +12,6 @@ router.use('/polls', pollRoutes);
 router.use('/polls', responseRoutes);
 router.use('/polls', analyticsRoutes);
 router.use('/logs', logRoutes);
+router.get('/health', (_, res) => res.status(200).json({ status: 'OK', timestamp: Date.now() }));
 
 export default router;

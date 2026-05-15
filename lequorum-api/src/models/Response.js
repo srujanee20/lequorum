@@ -2,12 +2,7 @@ import { Model, DataTypes } from "sequelize";
 
 export default (sequelize) => {
 
-    class Response extends Model {
-        id;
-        pollId;
-        userId;
-        submittedAt;
-    }
+    class Response extends Model {}
 
     Response.init(
         {
