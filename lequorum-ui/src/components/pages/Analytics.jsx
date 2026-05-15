@@ -1,6 +1,6 @@
 import {
     Box, Container, Heading, Text, VStack, HStack,
-    SimpleGrid, Button, Spinner, Badge
+    SimpleGrid, Button, Spinner, Badge, Center
 } from '@chakra-ui/react';
 import { Stat } from '@chakra-ui/react';
 import { useParams, Link } from '@tanstack/react-router';

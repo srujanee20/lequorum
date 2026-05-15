@@ -1,7 +1,7 @@
 {
   "name": "lequorum-ui",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "author": "Srujanee Nayak <snayak52006@gmail.com>",
   "description": "The frontend module of lequorum",
